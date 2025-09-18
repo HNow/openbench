@@ -2117,6 +2117,7 @@ dependencies = [
     { name = "pydantic-settings" },
     { name = "scipy" },
     { name = "tiktoken" },
+    { name = "tokenizers" },
     { name = "typer" },
 ]
 
@@ -2148,6 +2149,7 @@ requires-dist = [
     { name = "pydantic-settings", specifier = ">=2.9.1" },
     { name = "scipy", specifier = ">=1.15.3" },
     { name = "tiktoken", specifier = ">=0.11.0" },
+    { name = "tokenizers", specifier = ">=0.21.4" },
     { name = "typer", specifier = ">=0.15.3" },
 ]
 

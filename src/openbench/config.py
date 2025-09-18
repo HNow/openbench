@@ -43,6 +43,15 @@ BENCHMARKS = {
         function_name="mbpp",
         is_alpha=False,
     ),
+    "longbench_v2": BenchmarkMetadata(
+        name="longbench_v2",
+        description="LongBench v2 - a benchmark for long-context reasoning tasks",
+        category="core",
+        tags=["long-context", "reasoning"],
+        module_path="openbench.evals.longbench_v2",
+        function_name="longbench_v2",
+        is_alpha=False,
+    ),
     # Graphwalks benchmarks (alpha)
     "clockbench": BenchmarkMetadata(
         name="ClockBench",

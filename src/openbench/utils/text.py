@@ -408,6 +408,13 @@ def get_token_count(text: str, model: str = "gpt-4o") -> int:
     """
     return len(tiktoken.encoding_for_model(model).encode(text))
 
+from tokenizers import Tokenizer
+
+# get gemma tokencount 
+def get_gemma_tok_cnt(text: str) -> int:
+    tokenizer = Tokenizer.from_pretrained("google/gemma-3-4b-it")
+    return len(tokenizer.encode(text).ids)
+
 
 def get_chatml_tok_cnt(chat_messages_str: str) -> int:
     """
