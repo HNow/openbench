@@ -50,11 +50,11 @@ def filter_dataset_by_task(dataset: Dataset, task: str) -> Dataset:
 
 def filter_dataset_by_token_count(dataset: Dataset, max_length: int) -> Dataset:
     # filter out samples that are longer than max_length
-    return dataset.filter(lambda x: get_gemma_tok_cnt(x.input) <= max_length)
+    return dataset.filter(lambda x: get_token_count(x.input) <= max_length)
 
     
 
-def get_dataset(max_length: int = None):
+def get_dataset(max_context_tokens: int = None):
     """
     Load in the LongBench v2 dataset and trim it to only 1 task for now
     """
@@ -64,6 +64,6 @@ def get_dataset(max_length: int = None):
     # now we need to apply filtering, since the dataset is an object this should work as a property/method
     
     dataset = filter_dataset_by_task(dataset, "Single-Document QA")
-    if max_length is not None:
-        dataset = filter_dataset_by_token_count(dataset, max_length)
+    if max_context_tokens is not None:
+        dataset = filter_dataset_by_token_count(dataset, max_context_tokens)
     return dataset

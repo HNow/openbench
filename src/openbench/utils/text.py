@@ -410,7 +410,10 @@ def get_token_count(text: str, model: str = "gpt-4o") -> int:
 
 from tokenizers import Tokenizer
 
-# get gemma tokencount 
+# get gemma tokencount
+# this relies on hugging face to pull the tokenizer
+# is also a hack, i think i would like to see a more generic way to do this
+# tokenizer paths should also be a thing so we can use tokenizers from other sources like hf, or google, or tiktoken, etc
 def get_gemma_tok_cnt(text: str) -> int:
     tokenizer = Tokenizer.from_pretrained("google/gemma-3-4b-it")
     return len(tokenizer.encode(text).ids)

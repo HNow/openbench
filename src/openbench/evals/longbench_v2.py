@@ -25,14 +25,16 @@ from openbench.scorers.longbench_v2 import longbench_v2_scorer
 
 
 
+
+
 # this is how we define a task
 # but what if i need multiple subtasks? is that a bad pattern here?
 # lets start simple with just one simple qa task
 @task
-def longbench_v2() -> Task:
+def longbench_v2(max_context_tokens: int = None) -> Task:
 
     # load dataset
-    dataset = get_dataset(max_length=128000)
+    dataset = get_dataset(max_context_tokens)
     
     return Task(
       dataset=dataset,
