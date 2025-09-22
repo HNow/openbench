@@ -62,6 +62,15 @@ BENCHMARKS = {
         function_name="graphwalks",
         is_alpha=True,
     ),
+    "tau_bench": BenchmarkMetadata(
+        name="TauBench",
+        description="A simple yet challenging benchmark for browsing agents",
+        category="core",
+        tags=["browsing", "reasoning"],
+        module_path="openbench.evals.taubench.tau_bench",
+        function_name="tau_bench",
+        is_alpha=False,
+    ),
     "graphwalks_bfs": BenchmarkMetadata(
         name="GraphWalks BFS",
         description="Multi-hop reasoning on graphs - BFS traversal tasks only",
