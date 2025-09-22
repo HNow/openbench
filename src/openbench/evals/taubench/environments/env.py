@@ -4,10 +4,12 @@ from openbench.datasets.taubench.taubench_load_data import get_retail_env_data, 
 from typing import Callable, Dict, Any, List
 from openbench.datasets.taubench.data.retail.wiki import retail_wiki
 from openbench.datasets.taubench.data.retail.rules import retail_rules
+from openbench.datasets.taubench.data.retail.tools.init_tools import retail_tools
+from inspect_ai.tool import Tool
 
 
 class Env(object):
-    def __init__(self, data_load_func: Callable[[], Dict[str, Any]], wiki: str, rules: List[str], user_strat: str, user_model: str, user_model_provider: str, agent_model: str, agent_model_provider: str) -> None:
+    def __init__(self, data_load_func: Callable[[], Dict[str, Any]], wiki: str, rules: List[str], user_strat: str, user_model: str, user_model_provider: str, agent_model: str, agent_model_provider: str, tools: List[Tool]) -> None:
         super().__init__()
         self.data_load_func = data_load_func
         self.data = self.data_load_func()
@@ -26,7 +28,7 @@ def get_task_env(env_type: str, user_strat: str, user_model: str, agent_model: s
         data_load_func = lambda: get_retail_env_data()
         wiki = retail_wiki
         rules = retail_rules
-        tools = []
+        tools = retail_tools
     elif env_type == "airline":
         data_load_func = lambda: get_airline_env_data()
         wiki = "airline_wiki"   

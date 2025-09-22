@@ -1,5 +1,6 @@
 from .calculate import calculate
-from inspect_ai.tool import Tool
-from typing import List, Type
 
-TOOLS: List[Type[Tool]] = [calculate]
+# build a list of tools ready to be given over to a model.generate call
+retail_tools = [
+    calculate
+]

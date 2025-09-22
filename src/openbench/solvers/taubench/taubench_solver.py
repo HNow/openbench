@@ -1,4 +1,4 @@
-
+import copy
 
 from inspect_ai.solver import solver, TaskState, Generate
 from openbench.evals.taubench.environments.env import get_task_env
@@ -35,10 +35,11 @@ def taubench_solver() -> Callable:
 
         # run the task agent
         # TODO, make this respective of type of agent
-        task_agent = tool_calling_agent(task_env.agent_model_provider,task_env.agent_model,task_env.wiki)
+        task_agent = tool_calling_agent(task_env.agent_model_provider,task_env.agent_model,task_env.wiki,task_env.tools)
 
         # run the task agent
-        messages = await task_agent(AgentState(messages=[]),simulated_user,state.metadata)
+        working_env_data=copy.deepcopy(task_env.data)
+        messages = await task_agent(AgentState(messages=[]),simulated_user,state.metadata,working_env_data)
 
         return state
 
