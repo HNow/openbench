@@ -55,8 +55,8 @@ def tool_calling_agent(agent_model: str, agent_model_provider: str,wiki: str,too
         
         for _ in range(10):
             # i need the tools now, these should be fully defined in the env i think
-            # response = await model.generate(state.messages,tools=tools)
-            response = await model.generate("what is the sum of 25 and 10?",tools=tools)
+            response = await model.generate(state.messages,tools=tools)
+            # response = await model.generate("what is the sum of 25 and 10?",tools=tools)
             # with this response we can now look over it for any tool calls and other content
 
             print(response,"\n\n\n RESPONSE")
